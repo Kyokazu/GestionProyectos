@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="ibox-title">
+                <h5 style="color:#FFFFFF">Datos de las solicitudes</h5>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a class="nav-link active" data-toggle="tab" href="#tab-1">Detalles de solicitudes</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" id="tab-1" class="tab-pane active">
+                    <div class="panel-body">
+
+                        <div class="panel panel-body">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre de la solicitud</b></label>
+                                    <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_solicitudesRF10" id="combo_solicitudesRF10">
+                                        <option value="-1">Seleccione el proyecto</option>
+                                    </select>
+                                </div>
+
+                                <div class='table mt-4 mb-4'><br>
+                                    <table class='table table-striped mt-4 mb-4 centradito' id='tablaComboSeleccionado' name='tablaComboSeleccionado' style='width: 100%'>
+                                        <thead>
+                                            <tr style='text-align: center; background: #aa1916; color:white;'>
+                                                <th>ID</th>
+                                                <th>ID PROYECTO</th>
+                                                <th>NOMBRE PROYECTO</th>
+                                                <th>NOMBRE INVESTIGADOR</th>
+                                                <th>CONDICION INVESTIGADOR</th>
+                                                <th>VISTO BUENO DIRECTOR DEPARTAMENTO</th>
+                                                <th>VISTO BUENO REPRESENTANTE FACULTAD</th>
+                                                <th>FECHA SOLICITUD</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="aprobarConceptoCumplimiento_RF10()">Aprobar Solicitud</button>
+                                    <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="rechazarConceptoCumplimiento_RF10()">Rechazar Solicitud</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="../js/RF/RF10.js"></script>

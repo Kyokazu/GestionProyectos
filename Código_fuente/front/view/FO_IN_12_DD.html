@@ -1,0 +1,55 @@
+<!-- Modal de Usuarios -->
+<div class="col-md-8 mx-auto" id="modalPublicaciones">
+    <form>
+        <div class="ibox-title">
+            <h5 style="color:#FFFFFF">Datos del Proyecto:</h5>
+        </div>
+
+</div>
+</form>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight" id="tablaPublicaciones">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title row">
+                    <h5 class="text-white col">FO-IN-12 Concepto Cumplimiento acompañamiento</h5>
+
+                    <h5 class="label label-successE float-right"> <a onclick="Menu.FO_IN_12_1()" style="background-color: #D14844 ;display: inline !important" class="btn btn-primary">+ Agregar</a></h5>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre de la solicitud</b></label>
+                    <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_solicitudesF" id="combo_solicitudesF">
+                        <option value="-1">Seleccione el proyecto</option>
+                    </select>
+                </div>
+                <div class="ibox-content">
+                    <div class='table mt-4 mb-4'><br>
+                        <table class='table table-striped mt-4 mb-4 centradito' id='listadoTablaFO_IN_12_DD' style='width: 100%'>
+                            <thead>
+                                <tr style='text-align: center; background: #aa1916; color:white;'>
+                                    <th>ID</th>
+                                    <th>NOMBRE JOVEN INVESTIGADOR</th>
+                                    <th>NOMBRE TUTOR</th>
+                                    <th>FECHA SOLICITUD</th>
+                                    <th>ESTADO SOLICITUD</th>                          
+                                </tr>
+                            </thead>
+                        </table>
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="aprobarSolicitudHorasTutor_DD()">Aprobar Solicitud</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin TTabla de Usuarios -->
+
+
+
+
+
+
+<script type="text/javascript" src="../js/DD/DD12.js"></script>

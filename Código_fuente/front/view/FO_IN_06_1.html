@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="ibox-title">
+                <h5 style="color:#FFFFFF">Datos del Proyecto:</h5>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a class="nav-link active" data-toggle="tab" href="#tab-1">Datos del proyecto</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-2">Horas Solicitadas</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" id="tab-1" class="tab-pane active">
+                    <div class="panel-body">
+
+                        <div class="panel panel-body">
+                            <div class="col-sm-8">
+                                <input type="hidden" class="form-control" name="id_hidden_solicitud" id="id_hidden_solicitud">
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="hidden" class="form-control" name="id_proyecto_hidden" id="id_proyecto_hidden" value="1">
+                            </div>
+                            <br>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Número de contrato:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Numero_Contrato" id="txt_Numero_Contrato">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre del proyecto:</b></label>
+                                <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_proyectos" id="combo_proyectos" >
+                                    <option value="-1">Seleccione el proyecto</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Grupo de investigación: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Grupo_investigación" id="txt_Grupo_investigación">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Linea de investigación</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Lineas_Investigacion" id="txt_Lineas_Investigacion">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Facultad: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Facultad" id="txt_Facultad">
+                                </div>
+                            </div>
+                        </div>
+
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-4 pt-0"> <b> Fecha del último informe parcial o final </b> </legend>
+
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" name="txt_fecha_ultimo_informe" id="txt_fecha_ultimo_informe">
+                                </div>
+
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Fecha de inicio:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" name="txt_Fecha_inicio" id="txt_Fecha_inicio">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Fecha de Fin: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" nname="txt_Fecha_Fin" id="txt_Fecha_Fin">
+                            </div>
+                        </div>          
+
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="registrar_contrato_FO_IN_06()">Confirmar Datos</button>
+
+
+                    </div>
+                </div>
+                <div role="tabpanel" id="tab-2" class="tab-pane">
+                    <div class="panel-body">
+
+                        <br>
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre de Investigador:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Nombre_Investigador" id="txt_Nombre_Investigador">
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Horas Solicitadas:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Numero_Solicitadas" id="txt_Numero_Solicitadas">
+                            </div>
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Seleccione condición de investigador</b></label>
+                            <select class="form-control" name="combo_condicion" id="combo_condicion" >
+                                <option value=""></option>
+                                <option value="Director">Director </option>
+                                <option value="Coinvestigador">Coinvestigador</option>
+                            </select>
+
+                        </div> 
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" style="background-color: #D14844" class="btn btn-primary" 
+                                        id="btnUserReg" onclick="registrarOtroInvestigador()">Registrar investigador</button>
+
+                            </div>
+                        </div> 
+
+                        <div class="modal-footer">
+
+
+                            <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="registrarFO_IN_06()">Registrar Solicitud</button>
+                            <button type="button" style="background-color: #D14844" class="btn btn-primary" onclick="ocultarModalPublicaciones()">Cerrar</button>
+
+                        </div>   
+
+
+                    </div>      
+
+                </div>
+
+                <div role="tabpanel" id="tab-3" class="tab-pane">
+                    <div class="panel-body">
+                        aca va el tercer
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../js/FO_IN_06/FO_IN_06.js"></script>

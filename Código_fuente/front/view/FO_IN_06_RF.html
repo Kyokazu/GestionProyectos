@@ -1,0 +1,50 @@
+<!-- Modal de Usuarios -->
+<div class="col-md-8 mx-auto" id="modalPublicaciones">
+    <form>
+        <div class="ibox-title">
+            <h5 style="color:#FFFFFF">Datos del Proyecto:</h5>
+        </div>
+
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight" id="tablaPublicaciones">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title row">
+                    <h5 class="text-white col">FO-IN-06 - Horas solicitadas</h5>
+
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre de la solicitud</b></label>
+                    <select class="form-control" name="combo_solicitudesRF06" id="combo_solicitudesRF06">
+                        <option value="-1">Seleccione el proyecto</option>
+                    </select>
+                </div>
+                <div class="ibox-content">
+                    <div class='table mt-4 mb-4'><br>
+                        <table class='table table-striped mt-4 mb-4 centradito' id='listadoTablaFO_IN_06_RF' style='width: 100%'>
+                            <thead>
+                                <tr style='text-align: center; background: #aa1916; color:white;'>
+                                    <th>ID</th>
+                                    <th>NOMBRE PROYECTO</th>
+                                    <th>FECHA SOLICITUD</th>
+                                    <th>VISTO BUENO DIRECTOR GRUPO</th>
+                                    <th>VISTO BUENO REPRESENTANTE FACULTAD</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="aprobarSolicitudHoras_RF06()">Aprobar Solicitud</button>
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="rechazarSolicitudHoras_RF06()">Rechazar Solicitud</button>
+                   
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../js/RF/RF06.js"></script>

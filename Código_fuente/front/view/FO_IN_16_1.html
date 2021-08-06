@@ -1,0 +1,165 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="ibox-title">
+                <h5 style="color:#FFFFFF">FO-IN-16 Informe de Gestión Tutores</h5>
+                <input type="hidden" class="form-control" name="id_solicitud_hidden" id="id_solicitud_hidden" value="">
+                <input type="hidden" class="form-control" name="id_proyecto_hidden" id="id_proyecto_hidden" value="">
+                <input type="hidden" class="form-control" name="control" id="control" value="No">
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a class="nav-link active" data-toggle="tab" href="#tab-1">Datos del Investigador y Proyecto </a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-2">Datos del Proyecto</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" id="tab-1" class="tab-pane active">
+                    <div class="panel-body">
+
+                        <div class="panel panel-body">
+
+                            <br>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Facultad:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Facultad" id="txt_Facultad">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Grupo de Investigación:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Grupo_Investigacion" id="txt_Grupo_Investigacion">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Departamento: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Departamento" id="txt_Departamento">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Nombre del Tutor:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Nombre_Tutor" id="txt_Nombre_Tutor">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Líneas de Investigación: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Lineas_Investigacion" id="txt_Lineas_Investigacion">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Nombre Joven Investigación: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Nombre_Joven" id="txt_Nombre_Joven">
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Convenio Colciencias: </b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Convenio_Colciencias" id="txt_Convenio_Colciencias">
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Convocatoria  Jóvenes Investigación N°:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Numero_concatoria_jovenes" id="txt_Numero_concatoria_jovenes">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Periodo de Tutoría:</b> </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="txt_Periodo_Tutoria" id="txt_Periodo_Tutoria">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div role="tabpanel" id="tab-2" class="tab-pane">
+                    <div class="panel-body">
+
+                        <br>
+
+                        <div class="form-group row">
+
+                            <div class="form-group">
+                                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Semestre Académico:</b></label>
+                                <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_semestre" id="combo_semestre" >
+                                    <option value="2021-1">2021-1</option>
+                                    <option value="2021-2">2021-2</option>
+                                    <option value="2022-1">2022-1</option>
+                                    <option value="2022-2">2022-2</option>
+                                    <option value="2023-1">2023-1</option>
+                                    <option value="2023-2">2023-2</option>
+                                </select>
+                            </div> 
+
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Actividades Desarrolladas:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Actividades_Desarrolladas" id="txt_Actividades_Desarrolladas">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Productos Alcanzados:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Productos_Alcanzados" id="txt_Productos_Alcanzados">
+                            </div>
+                        </div>
+                        <h5 class="label-successE float-right"> <a onclick="registrar_Actividad_FO_IN_16()" style="background-color: #D14844" class="btn btn-primary">Agregar otra actividad</a></h5>
+                        <br> <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                        <div class="modal-footer">
+
+
+                            <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="registrar_FO_IN_16()">Registrar Informe</button>
+                            <button type="button" style="background-color: #D14844" class="btn btn-primary" onclick="ocultarModalPublicaciones()">Cerrar</button>
+
+                        </div>   
+
+
+                    </div>      
+
+                </div>
+
+                <div role="tabpanel" id="tab-3" class="tab-pane">
+                    <div class="panel-body">
+                        aca va el tercer
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../js/FO_IN_16/FO_IN_16.js"></script>

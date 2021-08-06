@@ -1,0 +1,137 @@
+<!-- Modal de Usuarios -->
+<div class="col-md-8 mx-auto" id="modalPublicaciones">
+    <form role="form">
+        <div class="ibox-title">
+            <h5 style="color:#FFFFFF">Datos del Proyecto</h5>
+        </div>
+        <div class="panel panel-body">
+
+
+
+            <br>
+
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre del Docente:</b> </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="txt_Nombre_Docente" id="txt_Nombre_Docente">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre del Convenio del programa Jóvenes Investigadores e Innovadores:</b> </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="txt_Nombre_Convenio" id="txt_Nombre_Convenio">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Grupo de Investigación al cual pertenece la propuesta de Investigación:</b> </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="txt_Grupo_Investigacion_Pertenece" id="txt_Grupo_Investigacion_Pertenece">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Nombre de la Propuesta de Investigación:</b> </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="txt_Nombre_Propuesta" id="txt_Nombre_Propuesta">
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Número de Acta del Comité Central de Investigación y Extensión en la cual se le dio aval al proyecto:</b> </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="txt_Numero_Acta" id="txt_Numero_Acta">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Fecha de Inicio de las actividades del Joven Investigador:</b> </label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" name="txt_Fecha_inicio_Actividades" id="txt_Fecha_inicio_Actividades">
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Seleccione condición de docente</b></label>
+                <select class="form-control" name="combo_condicion" id="combo_condicion" >
+                    <option value=""></option>
+                    <option value="Cátedra">Cátedra</option>
+                    <option value="Planta">Planta</option>
+                </select>
+            </div> 
+
+            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Horas solicitadas</b> </label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="txt_Horas_Solicitadas" id="txt_Horas_Solicitadas">
+            </div>
+
+            <div class="form-group row">
+
+                <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> Semestre del cual se presenta el informe de gestión:</label>
+                <select class="form-control" name="combo_semestre" id="combo_semestre" >
+                    <option value=""></option>
+                    <option value="2020-1">2020-1</option>
+                    <option value="2020-2">2020-2</option>
+                    <option value="2021-1">2021-1</option>
+                    <option value="2021-2">2021-2</option>
+                    <option value="2022-1">2022-1</option>
+                    <option value="2022-2">2022-2</option>
+                </select>
+
+            </div> 
+
+
+            <!-- panel -->
+
+            <div class="modal-footer">
+                <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserAct" onclick="UpdateTp()">Actualizar</button>
+                <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="registrar_FO_IN_07()">Registrar</button>
+                <button type="button" style="background-color: #D14844" class="btn btn-primary" onclick="ocultarModalPublicaciones()">Cerrar</button>
+
+            </div>
+
+
+    </form>
+</div>
+</div>
+<!-- Cierre Modal de Usuarios -->
+
+<!-- Tabla de Usuarios -->
+<div class="wrapper wrapper-content animated fadeInRight" id="tablaPublicaciones">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title row">
+                    <h5 class="text-white col">FO-IN-07 Solicitud de Horas de Tutores de Jóvenes Investigadores</h5>
+                    <h5 class="label label-successE float-right"> <a onclick="mostrarModalPublicaciones()" style="background-color: #D14844;display: inline !important" class="btn btn-primary">+ Agregar</a></h5>
+                </div>
+                <div class="ibox-content">
+                    <div class='table mt-4 mb-4'><br>
+                        <table class='table table-striped mt-4 mb-4 centradito' id='listadoTablaFO_IN_07' style='width: 100%'>
+                            <thead>
+                                <tr style='text-align: center; background: #aa1916; color:white;'>
+                                    <th>NOMBRE DEL DOCENTE</th>
+                                    <th>NOMBRE DEL CONVENIO</th>
+                                    <th>FECHA SOLICITUD</th>
+                                    <th>VISTO BUENO DIRECTOR GRUPO</th>
+                                    <th>VISTO BUENO REPRESENTANTE FACULTAD</th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin Tabla de Usuarios -->
+
+<script type="text/javascript" src="../js/FO_IN_07/FO_IN_07.js"></script>

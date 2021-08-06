@@ -1,0 +1,580 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="ibox-title">
+                <h5 style="color:#FFFFFF">FO-IN-15 Informe de Gestión</h5>
+                <input type="hidden" class="form-control" name="id_solicitud_hidden" id="id_solicitud_hidden" value="">
+                <input type="hidden" class="form-control" name="id_proyecto_hidden" id="id_proyecto_hidden" value="">
+                <input type="hidden" class="form-control" name="control" id="control" value="No">
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a class="nav-link active" data-toggle="tab" href="#tab-1">Datos del proyecto</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-2">Investigadores</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-3">Cumplimiento de los Objetivos</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-4">Compromisos del Equipo de Investigación</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-5">Uso de Equipos Adquiridos con el Proyecto</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-6">Cumplimiento del Cronograma</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-7">Impactos Sociales y Económicos del Proyecto</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-8">Novedades del Proyecto</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-9">Conclusiones y Observaciones</a></li>
+                <li><a class="nav-link" data-toggle="tab" href="#tab-10">Observaciones del Representante de la Facultad</a></li>
+
+
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" id="tab-1" class="tab-pane active">
+                    <div class="panel-body">
+
+                        <br>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre del proyecto:</b></label>
+                            <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_proyectos" id="combo_proyectos" >
+                                <option value="-1">Seleccione el proyecto</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Numero de Contrato:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Numero_Contrato" id="txt_Numero_Contrato">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Acta del comité:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Acta_Comite" id="txt_Acta_Comite">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Facultad: </b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Facultad" id="txt_Facultad">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Grupo de investigación: </b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Grupo_investigación" id="txt_Grupo_investigación">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Representante de Facultad:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Representante_Facultad" id="txt_Representante_Facultad">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Valor Financiado:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Valor_Financiado" id="txt_Valor_Financiado">
+                            </div>
+                        </div>            
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Duración del Proyecto:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Duración_Proyecto" id="txt_Duración_Proyecto">
+                            </div>
+                        </div>            
+
+
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Fecha de inicio:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" name="txt_Fecha_inicio" id="txt_Fecha_inicio">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Fecha de Fin: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" nname="txt_Fecha_Fin" id="txt_Fecha_Fin">
+                            </div>
+                        </div>                        
+
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Fecha de Suspensión:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" name="txt_Fecha_Suspension" id="txt_Fecha_Suspension">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Fecha de Reinicio: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" nname="txt_Fecha_Reinicio" id="txt_Fecha_Reinicio">
+                            </div>
+                        </div>                        
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Prórroga:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Prorroga" id="txt_Prorroga">
+                            </div>
+                        </div> 
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Tiempo total de ejecución:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Tiempo_total_ejecucion" id="txt_Tiempo_total_ejecucion">
+                            </div>
+                        </div>   
+
+
+
+                    </div>
+
+                </div>
+                <div role="tabpanel" id="tab-2" class="tab-pane">
+                    <div class="panel-body">
+                        <br>
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Nombre de Investigador:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Nombre_Investigador" id="txt_Nombre_Investigador">
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Tipo de Investigador:</b> </label>
+                            <select class="form-control" name="combo_condicion" id="combo_condicion" >
+                                <option value=""></option>
+                                <option value="Director">Director </option>
+                                <option value="Coinvestigador">Coinvestigador</option>
+                            </select>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Horas Semanales:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Horas_Semanales" id="txt_Horas_Semanales">
+                            </div>
+                        </div> 
+                        <h5 class="label-successE float-right"> <a onclick="registrar_Investigador_FO_IN_15()" style="background-color: #D14844" class="btn btn-primary">Agregar otro Investigador</a></h5>
+                        <br> <br>
+
+                    </div>
+                </div>
+                <div role="tabpanel" id="tab-3" class="tab-pane">
+                    <div class="panel-body">
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Objetivo Propuesto:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Objetivo_Propuesto" id="txt_Objetivo_Propuesto">
+                            </div>
+                        </div>           
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Actividades Específicas Propuestas:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Actividades_Propuestas" id="txt_Actividades_Propuestas">
+                            </div>
+                        </div>           
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Actividades Específicas Desarrolladas:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Actividades_Desarrolladas" id="txt_Actividades_Desarrolladas">
+                            </div>
+                        </div>           
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Logros Alcanzados:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Logros_Alcanzados" id="txt_Logros_Alcanzados">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b> Porcentaje de Cumplimiento:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Porcentaje_Cumplimiento" id="txt_Porcentaje_Cumplimiento">
+                            </div>
+                        </div>
+
+                        <h5 class="label-successE float-right"> <a onclick="registrar_Objetivo_FO_IN_15()" style="background-color: #D14844" class="btn btn-primary">Agregar otro Objetivo</a></h5>
+                        <br> <br>
+                    </div>
+                </div>
+
+
+                <div role="tabpanel" id="tab-4" class="tab-pane">
+                    <div class="panel-body">
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b> Informe de gestión sobre el proyecto, 15 días antes de finalizar clases durante el semestre académico, después de la firma del acta de inicio del proyecto.</b> </label>
+                            <br>
+                        </center>
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Cantidad:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="txt_Cantidad1" id="txt_Cantidad1">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Estado del Compromiso: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" nname="txt_Estado_Compromiso1" id="txt_Estado_Compromiso1">
+                            </div>
+                        </div>
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b>Informe final del proyecto de acuerdo a los lineamientos definidos por el Comité Central de Investigación y Extensión.</b> </label>
+                            <br>
+                        </center>
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Cantidad:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="txt_Cantidad2" id="txt_Cantidad2">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Estado del Compromiso: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" nname="txt_Estado_Compromiso2" id="txt_Estado_Compromiso2">
+                            </div>
+                        </div>            
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b>Una presentación de los resultados del proyecto en un evento nacional, regional o institucional.</b> </label>
+                            <br>
+                        </center>
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Cantidad:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="txt_Cantidad3" id="txt_Cantidad3">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Estado del Compromiso: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" nname="txt_Estado_Compromiso3" id="txt_Estado_Compromiso3">
+                            </div>
+                        </div>              
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b>Una presentación de los resultados del proyecto en un evento internacional.</b> </label>
+                            <br>
+                        </center>
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Cantidad:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="txt_Cantidad4" id="txt_Cantidad4">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Estado del Compromiso: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" nname="txt_Estado_Compromiso4" id="txt_Estado_Compromiso4">
+                            </div>
+                        </div>   
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b>Publicar un artículo* en una revista científica del orden nacional o internacional, indexada u homologada por COLCIENCIAS.</b> </label>
+                            <br>
+                        </center>
+                        <div class="form-group row">
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b>Cantidad:</b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" name="txt_Cantidad5" id="txt_Cantidad5">
+                            </div>
+
+                            <label for="formGroupExampleInput" class="col-sm-3 col-form-label"> <b> Estado del Compromiso: </b> </label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" nname="txt_Estado_Compromiso5" id="txt_Estado_Compromiso5">
+                            </div>
+                        </div>            
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div role="tabpanel" id="tab-5" class="tab-pane">
+                    <div class="panel-body">
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Equipo:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Equipo" id="txt_Equipo">
+                            </div>
+                        </div>   
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Porcentaje de uso en el Proyecto:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Porcentaje_Proyecto" id="txt_Porcentaje_Proyecto">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Porcentaje de uso en otros Proyecto:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Porcentaje_Otros_Proyecto" id="txt_Porcentaje_Otros_Proyecto">
+                            </div>
+                        </div>                       
+
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Como Prevee el Uso del Equipo una Vez Finalizado el Proyecto:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Uso_Equipo_Proyecto" id="txt_Uso_Equipo_Proyecto">
+                            </div>
+                        </div>                       
+
+                        <h5 class="label-successE float-right"> <a onclick="registrar_Equipos_FO_IN_15()" style="background-color: #D14844" class="btn btn-primary">Agregar otro Equipo</a></h5>
+
+                    </div>
+                </div>
+
+
+
+                <div role="tabpanel" id="tab-6" class="tab-pane">
+                    <div class="panel-body">
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Objetivo:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Objetivo" id="txt_Objetivo">
+                            </div>    
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"> <b>Actividades:</b> </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="txt_Actividades" id="txt_Actividades">
+                            </div>    
+                        </div>       
+
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Seleccione el estado:</b></label>
+                            <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_semestre" id="combo_semestre" >
+                                <option value="Planeado">Planeado</option>
+                                <option value="Realizado">Realizado</option>
+                                <option value="En proceso">En proceso</option>
+                                <option value="Atrasado">Atrasado</option>
+                            </select>
+                        </div> 
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" class="col-sm-4 col-form-label"><b>Nombre del proyecto:</b></label>
+                            <select class="form-control" onchange="cargar_DatosInfos(this.value);" name="combo_estado" id="combo_estado" >
+                                <option value="2021-1">2021-1</option>
+                                <option value="2021-2">2021-2</option>
+                                <option value="2022-1">2022-1</option>
+                                <option value="2022-2">2022-2</option>
+                                <option value="2023-1">2023-1</option>
+                                <option value="2023-2">2023-2</option>
+                            </select>
+                        </div>     
+                        <h5 class="label-successE float-right"> <a onclick="registrar_Cronograma_FO_IN_15()" style="background-color: #D14844" class="btn btn-primary">Agregar otra Actividad</a></h5>
+                        <br>
+                        <br>
+                    </div>      
+                </div>
+
+                <div role="tabpanel" id="tab-7" class="tab-pane">
+                    <div class="panel-body">
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> ¿A través del proyecto se han producido hallazgos conceptuales que merezcan ser resaltados? ¿Implican cambios en el desarrollo del proyecto?</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta1" id="txt_Impacto_Respuesta1">
+                            </div>
+                        </div> 
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> ¿Se ha producido alguna innovación metodológica importante desde su proyecto? ¿Implica cambios en el proyecto?</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta2" id="txt_Impacto_Respuesta2">
+                            </div>
+                        </div> 
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> En lo referente a los hallazgos o resultados intermedios de su investigación, ¿cuáles son los que considera usted más relevantes? ¿Algunos de ellos implican cambios en la marcha del proyecto? </FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta3" id="txt_Impacto_Respuesta3">
+                            </div>
+                        </div> 
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> ¿Está formando jóvenes investigadores? </FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta4" id="txt_Impacto_Respuesta4">
+                            </div>
+                        </div> 
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> ¿Participa o construye una red temática a raíz del proyecto de investigación que ejecuta o está vinculado con otros grupos de Investigación? </FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta5" id="txt_Impacto_Respuesta5">
+                            </div>
+                        </div> 
+
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> ¿Qué destacaría usted como virtud del proyecto en lo referente a sus características y en términos de organización y configuración del trabajo en grupo?</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta6" id="txt_Impacto_Respuesta6">
+                            </div>
+                        </div> 
+
+
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> Indique si ha presentado dificultades durante el desarrollo del proyecto. </FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_Impacto_Respuesta7" id="txt_Impacto_Respuesta7">
+                            </div>
+                        </div> 
+
+
+                    </div>
+                </div>
+
+                <div role="tabpanel" id="tab-8" class="tab-pane">
+                    <div class="panel-body">
+
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> Relacione en el siguiente espacio las suspensiones, reinicios, prórrogas, entre otros:</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_novedades" id="txt_novedades">
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div role="tabpanel" id="tab-9" class="tab-pane">
+                    <div class="panel-body">
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> Relacione en el siguiente espacio las conclusiones y observaciones derivadas del desarrollo del proyecto:</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_conclusiones" id="txt_conclusiones">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div role="tabpanel" id="tab-10" class="tab-pane">
+                    <div class="panel-body">
+                        <center>
+                            <label for="formGroupExampleInput">  <b><FONT COLOR="black"> Observaciones del Representante:</FONT> </b> </label>
+                            <br>
+                        </center>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="txt_observaciones" id="txt_observaciones">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+
+
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" id="btnUserReg" onclick="registrar_FO_IN_15()">Registrar</button>
+                        <button type="button" style="background-color: #D14844" class="btn btn-primary" onclick="ocultarModalPublicaciones()">Cerrar</button>
+
+                    </div>  
+                </div>
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="../js/FO_IN_15/FO_IN_15.js"></script>
