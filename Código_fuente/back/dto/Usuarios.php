@@ -13,6 +13,7 @@ class Usuarios {
   private $id;
   private $persona_id;
   private $password;
+  private $correo;
 
     /**
      * Constructor de Usuarios
@@ -66,6 +67,16 @@ class Usuarios {
       $this->password = $password;
   }
 
+  function getCorreo() {
+      return $this->correo;
+  }
+
+  function setCorreo($correo) {
+      $this->correo = $correo;
+  }
+
+
+  
 
 }
 //That`s all folks!

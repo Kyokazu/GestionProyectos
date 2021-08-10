@@ -1,8 +1,9 @@
 <?php
+
 /*
-              -------Creado por-------
-             \(x.x )/ Anarchy \( x.x)/
-              ------------------------
+  -------Creado por-------
+  \(x.x )/ Anarchy \( x.x)/
+  ------------------------
  */
 
 //    Puedes sugerirnos frases nuevas, se nos están acabando ( u.u)  \\
@@ -11,16 +12,14 @@ include_once realpath('../dao/interfaz/IUsuariosDao.php');
 include_once realpath('../dto/Usuarios.php');
 include_once realpath('../dto/Persona.php');
 
-class UsuariosDao implements IUsuariosDao
-{
+class UsuariosDao implements IUsuariosDao {
 
     private $cn;
 
     /**
      * Inicializa una única conexión a la base de datos, que se usará para cada consulta.
      */
-    function __construct($conexion)
-    {
+    function __construct($conexion) {
         $this->cn = $conexion;
     }
 
@@ -30,15 +29,14 @@ class UsuariosDao implements IUsuariosDao
      * @return  Valor asignado a la llave primaria 
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function insert($usuarios)
-    {
+    public function insert($usuarios) {
         $id = $usuarios->getId();
         $persona_id = $usuarios->getPersona_id()->getId();
         $password = $usuarios->getPassword();
 
         try {
             $sql = "INSERT INTO `usuarios`( `id`, `persona_id`, `password`)"
-                . "VALUES ('$id','$persona_id','$password')";
+                    . "VALUES ('$id','$persona_id','$password')";
             return $this->insertarConsulta($sql);
         } catch (SQLException $e) {
             throw new Exception('Primary key is null');
@@ -51,14 +49,13 @@ class UsuariosDao implements IUsuariosDao
      * @return El objeto consultado o null
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function select($usuarios)
-    {
+    public function select($usuarios) {
         $id = $usuarios->getId();
 
         try {
             $sql = "SELECT `id`, `persona_id`, `password`"
-                . "FROM `usuarios`"
-                . "WHERE `id`='$id'";
+                    . "FROM `usuarios`"
+                    . "WHERE `id`='$id'";
             $data = $this->ejecutarConsulta($sql);
             for ($i = 0; $i < count($data); $i++) {
                 $usuarios->setId($data[$i]['id']);
@@ -80,8 +77,7 @@ class UsuariosDao implements IUsuariosDao
      * @return  Valor de la llave primaria 
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function update($usuarios)
-    {
+    public function update($usuarios) {
         $id = $usuarios->getId();
         $persona_id = $usuarios->getPersona_id()->getId();
         $password = $usuarios->getPassword();
@@ -100,8 +96,7 @@ class UsuariosDao implements IUsuariosDao
      * @return  Valor de la llave primaria eliminada
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function delete($usuarios)
-    {
+    public function delete($usuarios) {
         $id = $usuarios->getId();
 
         try {
@@ -117,13 +112,12 @@ class UsuariosDao implements IUsuariosDao
      * @return ArrayList<Usuarios> Puede contener los objetos consultados o estar vacío
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function listAll()
-    {
+    public function listAll() {
         $lista = array();
         try {
             $sql = "SELECT `id`, `persona_id`, `password`"
-                . "FROM `usuarios`"
-                . "WHERE 1";
+                    . "FROM `usuarios`"
+                    . "WHERE 1";
             $data = $this->ejecutarConsulta($sql);
             for ($i = 0; $i < count($data); $i++) {
                 $usuarios = new Usuarios();
@@ -147,13 +141,12 @@ class UsuariosDao implements IUsuariosDao
      * @return Usuario Contiene el objeto consultado o estar vacío
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function validarEmail($correo)
-    {
+    public function validarEmail($correo) {
         $usuarios = null;
         try {
             $sql = "SELECT * "
-                . "FROM `data_seme`"
-                . "WHERE correo='$correo'";
+                    . "FROM `data_seme`"
+                    . "WHERE correo='$correo'";
             $data = $this->ejecutarConsulta($sql);
             for ($i = 0; $i < count($data); $i++) {
                 $usuarios = new Usuarios();
@@ -163,7 +156,6 @@ class UsuariosDao implements IUsuariosDao
                 $persona->setCorreo($data[$i]['correo']);
                 $usuarios->setPersona_id($persona);
                 $usuarios->setPassword($data[$i]['rol']);
-
             }
             if (isset($usuarios)) {
                 return $usuarios;
@@ -178,16 +170,61 @@ class UsuariosDao implements IUsuariosDao
      * @return ArrayList<Usuario> Puede contener los objetos consultados o estar vacío
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    
-    public function login($user, $pass)
-    {
+    public function login123($user, $pass) {
         $usuarios = null;
         try {
             $sql = "SELECT * FROM `data_seme` WHERE `correo`='$user' and `password`='$pass' ";
             $data = $this->ejecutarConsulta($sql);
             for ($i = 0; $i < count($data); $i++) {
                 $usuarios = new Usuarios();
-                $usuarios->setId($data[$i]['nombreD']); 
+                $usuarios->setId($data[$i]['nombreD']);
+                $persona = new Persona();
+                $persona->setId($data[$i]['persona_id']);
+                $persona->setCorreo($data[$i]['correo']);
+                $persona->setPerfiles_id($data[$i]['rol']);
+                $persona->setId_aux($data[$i]['id']);
+                $usuarios->setPersona_id($persona);
+                $usuarios->setPassword($data[$i]['nombre']);
+            }
+            if (isset($usuarios)) {
+                return $usuarios;
+            }
+        } catch (SQLException $e) {
+            throw new Exception('Primary key is null');
+            return null;
+        }
+    }
+
+    public function login($user, $pass) {
+        $usuarios = null;
+        try {
+            $sql = "SELECT * FROM `LoginUser` WHERE `correo`='$user' and `password`='$pass' and `estado` = '1' ";
+
+            $data = $this->ejecutarConsulta($sql);
+
+            for ($i = 0; $i < count($data); $i++) {
+                $usuarios = new Usuarios();
+                $usuarios->setCorreo($data[$i]['correo']);
+            }
+            if (isset($usuarios)) {
+                return $usuarios;
+            }
+        } catch (SQLException $e) {
+            throw new Exception('Primary key is null');
+            return null;
+        }
+    }
+
+    public function login_stado($user, $pass) {
+        $usuarios = null;
+        try {
+            $sql = "SELECT * FROM `persona_login` WHERE `correo`='$user' and `password`='$pass' and `estado` = '1' ";
+
+            $data = $this->ejecutarConsulta($sql);
+
+            for ($i = 0; $i < count($data); $i++) {
+                $usuarios = new Usuarios();
+                $usuarios->setId($data[$i]['nombre']);
                 $persona = new Persona();
                 $persona->setId($data[$i]['persona_id']);
                 $persona->setCorreo($data[$i]['correo']);
@@ -211,8 +248,7 @@ class UsuariosDao implements IUsuariosDao
      * @return  Valor de la llave primaria
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function inserToken($token, $id, $campo)
-    {
+    public function inserToken($token, $id, $campo) {
         try {
             $sql = "UPDATE usuarios SET `$campo`='$token' WHERE `persona_id`='$id'";
             return $this->updateConsulta($sql);
@@ -227,8 +263,7 @@ class UsuariosDao implements IUsuariosDao
      * @return  Valor de la llave primaria
      * @throws NullPointerException Si los objetos correspondientes a las llaves foraneas son null
      */
-    public function newPass($clave, $token)
-    {
+    public function newPass($clave, $token) {
         try {
             $sql = "UPDATE usuarios SET `password`='$clave', token_clave='' WHERE token_clave='$token' ";
             return $this->updateConsulta($sql);
@@ -237,16 +272,15 @@ class UsuariosDao implements IUsuariosDao
         }
     }
 
-    public function insertarConsulta($sql)
-    {
+    public function insertarConsulta($sql) {
         $this->cn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sentencia = $this->cn->prepare($sql);
         $sentencia->execute();
         $sentencia = null;
         return $this->cn->lastInsertId();
     }
-    public function ejecutarConsulta($sql)
-    {
+
+    public function ejecutarConsulta($sql) {
         $this->cn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sentencia = $this->cn->prepare($sql);
         $sentencia->execute();
@@ -255,8 +289,7 @@ class UsuariosDao implements IUsuariosDao
         return $data;
     }
 
-    public function updateConsulta($sql)
-    {
+    public function updateConsulta($sql) {
         $this->cn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sentencia = $this->cn->prepare($sql);
         $sentencia->execute();
@@ -264,12 +297,14 @@ class UsuariosDao implements IUsuariosDao
         $sentencia = null;
         return $rta;
     }
+
     /**
      * Cierra la conexión actual a la base de datos
      */
-    public function close()
-    {
+    public function close() {
         $cn = null;
     }
+
 }
+
 //That`s all folks!

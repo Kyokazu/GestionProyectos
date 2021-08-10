@@ -217,79 +217,12 @@ class LoginView {
      *
      */
     static iniciarSesion() {
-        LoginController.iniciarSesion($("#correo").val().toLowerCase(), $("#clave").val());
-    }
+        if ($("#correo").val() == "" || $("#clave").val() == "") {
+            alert("Por favor llene todos los campos");
+        } else {
+            LoginController.iniciarSesion($("#correo").val().toLowerCase(), $("#clave").val());
+        }
 
-    static iniciarSesion2() {
-        let ordenes = {
-            correo: $('#correo').val(),
-        };
-        Utilitario.agregarMascara();
-        fetch("../../back/controller/PersonaController_Consultar.php", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                //Authorization: Utilitario.getLocal("sesionId"),
-            },
-            body: JSON.stringify(ordenes),
-        })
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw response;
-                })
-                .then(function (data) {
-                    if (data.id === "4") {
-                        window.location.replace("principal_Docentes.html");
-                    }
-                    if (data.id === "5") {
-                        window.location.replace("principal_Jovenes.html");
-                    }
-                    if (data.id === "6") {
-                        window.location.replace("principal_Director_Departamento.html");
-                    }
-                    if (data.id === "7") {
-                        window.location.replace("principal_Representante_Facultad.html");
-                    }
-                })
-                .catch(function (promise) {
-                    if (promise.json) {
-                        promise.json().then(function (response) {
-                            let status = promise.status,
-                                    mensaje = response ? response.mensaje : "";
-                            if (status === 401 && mensaje) {
-                                Mensaje.mostrarMsjWarning("Advertencia", mensaje, function () {
-                                    Utilitario.cerrarSesion();
-                                });
-                            } else if (mensaje) {
-                                Mensaje.mostrarMsjError("Error", mensaje);
-                            }
-                        });
-                    } else {
-                        Mensaje.mostrarMsjError(
-                                "Error",
-                                "Ocurrió un error inesperado. Intentelo nuevamente por favor."
-                                );
-                    }
-                })
-                .finally(function () {
-                    Utilitario.quitarMascara();
-                });
-        Utilitario.setLocal(
-                "user",
-                JSON.stringify({
-                    emailUser: "danielcaballero796@gmail.com",
-                    photoURL: "S6G9uniUYwVU9lNoqvppqmTQFL42",
-                    displayName: "Daniel Caballero",
-                    emailVerified: true,
-                    isLogin: true,
-                    uid: "S6G9uniUYwVU9lNoqvppqmTQFL42",
-                    estado: 1,
-                    rol: 1,
-                })
-                )
     }
 
     /**
@@ -465,6 +398,6 @@ class LoginView {
     static cambiarClave() {
         let nuevaclave = $("#clavenueva").val();
         let token = Utilitario.getLocal("tokenChange");
-        UsuarioController.cambiarClave(token, nuevaclave);
+        LoginController.cambiarClave(token, nuevaclave);
     }
 }

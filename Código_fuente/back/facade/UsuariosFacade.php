@@ -120,6 +120,23 @@ class UsuariosFacade
         return $result;
     }
 
+    public static function login($user, $pass)
+    {
+        $FactoryDao = new FactoryDao(self::getGestorDefault());
+        $usuarioDao = $FactoryDao->getusuariosDao(self::getDataBaseDefault());
+        $result = $usuarioDao->login($user, $pass);
+        $usuarioDao->close();
+        return $result;
+    }
+    public static function login_stado($user, $pass)
+    {
+        $FactoryDao = new FactoryDao(self::getGestorDefault());
+        $usuarioDao = $FactoryDao->getusuariosDao(self::getDataBaseDefault());
+        $result = $usuarioDao->login_stado($user, $pass);
+        $usuarioDao->close();
+        return $result;
+    }
+    
     /**
      * Metodo para validar si el correo existe para recuperar contraseña de un Usuario
      * Puede recibir NullPointerException desde los métodos del Dao
@@ -139,7 +156,7 @@ class UsuariosFacade
      * Puede recibir NullPointerException desde los métodos del Dao
      * @return $result Array con los objetos Usuario en base de datos o Null
      */
-    public static function login($user, $pass)
+    public static function login1($user, $pass)
     {
         $FactoryDao = new FactoryDao(self::getGestorDefault());
         $usuarioDao = $FactoryDao->getusuariosDao(self::getDataBaseDefault());

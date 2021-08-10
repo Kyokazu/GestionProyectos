@@ -10,80 +10,19 @@ class LoginController {
      * @param {String} correo   Correo electronico del usuario que desea iniciar sesión.
      * @param {String} clave    Clave del usuario que desea iniciar sesión.
      */
-    static iniciarSesion(correo, clave) {
+    static iniciarSesion2(correo, clave) {
         var login = {
             correo,
             clave,
         };
-
         Utilitario.agregarMascara();
-
         fetch("../../back/controller/UsuarioController_Login.php", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(login),
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw response;
-            })
-            .then(function(data) {
-                let usuario = data.usuario;
-                console.log(usuario);
-                Utilitario.setLocal("sesionId", data.token);
-                Utilitario.setLocal("rol", usuario.rol);
-                Utilitario.setLocal("id", usuario.id);
-                Utilitario.setLocal("nombre", usuario.nombre);
-                Utilitario.setLocal("id_semillero", usuario.id_semillero);
-                Utilitario.setLocal("semillero", usuario.semillero);
-                Utilitario.setLocal("correo", usuario.correo);
-                window.location.href = "principal.html";
-            })
-            .catch(function(promise) {
-                if (promise.json) {
-                    promise.json().then(function(response) {
-                        var mensaje = response ? response.mensaje : "";
-                        if (mensaje) {
-                            Mensaje.mostrarMsjWarning("Advertencia", mensaje);
-                        }
-                    });
-                } else {
-                    Mensaje.mostrarMsjError(
-                        "Error",
-                        "Ocurrió un error inesperado. Intentelo nuevamente por favor."
-                    );
-                }
-            })
-            .finally(function() {
-                Utilitario.quitarMascara();
-            });
-    }
-
-    /**
-     * @method registrarUsuario
-     * Método que se encarga de ejecutar el servicio que registra un usuario.
-     *
-     * @param {Object} usuario  Objeto con los datos del usuario a registrar.
-     */
-    
-        static iniciarSesion2() {
-        let ordenes = {
-            correo: $('#correo').val(),
-        };
-        Utilitario.agregarMascara();
-        fetch("../../back/controller/PersonaController_Consultar.php", {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                //Authorization: Utilitario.getLocal("sesionId"),
             },
-            body: JSON.stringify(ordenes),
+            body: JSON.stringify(login),
         })
                 .then(function (response) {
                     if (response.ok) {
@@ -92,30 +31,56 @@ class LoginController {
                     throw response;
                 })
                 .then(function (data) {
-                    if (data.id === "4") {
-                        window.location.replace("view/principal_Docentes.html");
+                    let usuario = data.usuario;
+                    Utilitario.setLocal("sesionId", usuario[0].token);
+                    Utilitario.setLocal("rol", usuario[0].rol);
+                    Utilitario.setLocal("id", usuario[0].id);
+                    Utilitario.setLocal("nombre", usuario[0].nombre);
+                    Utilitario.setLocal("id_semillero", usuario[0].id_semillero);
+                    Utilitario.setLocal("semillero", usuario[0].semillero);
+                    Utilitario.setLocal("correo", usuario[0].correo);
+                    if (correo == "" && clave == "") {
+                        alert("Por favor, diligencie todos los campos");
+                    } else {
+                        if (correo === "shirleyn@ufps.edu.co" && clave == "poncho") {
+                            window.location.href = "principal_Docentes.html";
+                        }
+                        if (correo === "alejandra@ufps.edu.co" && clave == "william") {
+                            window.location.href = "principal_Jovenes.html";
+                        }
+                        if (correo === "salvador@ufps.edu.co" && clave == "huertasplata") {
+                            window.location.href = "principal_Director_Departamento.html";
+                        }
+                        if (correo === "jpilar@ufps.edu.co" && clave == "william") {
+                            window.location.href = "principal_Representante_Facultad.html";
+                        } else {
+                            alert("Usuario o clave incorrectos");
+                        }
                     }
-                    if (data.id === "5") {
-                        window.location.replace("view/principal_Jovenes.html");
-                    }
-                    if (data.id === "6") {
-                        window.location.replace("view/principal_Director_Departamento.html");
-                    }
-                    if (data.id === "7") {
-                        window.location.replace("view/principal_Representante_Facultad.html");
-                    }
+
+
+
+
+//               alert(data);
+//               if(data.usuario.correo === "shirleyn@ufps.edu.co"){
+//                    window.location.href = "principal_Docentes.html";
+//                }
+//                if(data.usuario.correo === "alejandra@ufps.edu.co"){
+//                    window.location.href = "principal_Jovenes.html";
+//                }
+//                if(data.usuario.correo === "salvador@ufps.edu.co"){
+//                    window.location.href = "principal_Director_Departamento.html";
+//                }
+//                if(data.usuario.correo === "jpilar@ufps.edu.co"){
+//                    window.location.href = "principal_Representante_Facultad.html";
+//                }
                 })
                 .catch(function (promise) {
                     if (promise.json) {
                         promise.json().then(function (response) {
-                            let status = promise.status,
-                                    mensaje = response ? response.mensaje : "";
-                            if (status === 401 && mensaje) {
-                                Mensaje.mostrarMsjWarning("Advertencia", mensaje, function () {
-                                    Utilitario.cerrarSesion();
-                                });
-                            } else if (mensaje) {
-                                Mensaje.mostrarMsjError("Error", mensaje);
+                            var mensaje = response ? response.mensaje : "";
+                            if (mensaje) {
+                                Mensaje.mostrarMsjWarning("Advertencia", mensaje);
                             }
                         });
                     } else {
@@ -128,62 +93,78 @@ class LoginController {
                 .finally(function () {
                     Utilitario.quitarMascara();
                 });
-        Utilitario.setLocal(
-                "user",
-                JSON.stringify({
-                    emailUser: "danielcaballero796@gmail.com",
-                    photoURL: "S6G9uniUYwVU9lNoqvppqmTQFL42",
-                    displayName: "Daniel Caballero",
-                    emailVerified: true,
-                    isLogin: true,
-                    uid: "S6G9uniUYwVU9lNoqvppqmTQFL42",
-                    estado: 1,
-                    rol: 1,
-                })
-                )
     }
-    
+
+    static iniciarSesion(correo, clave) {
+
+        if (correo == "" && clave == "") {
+            alert("Por favor, diligencie todos los campos");
+        } else {
+            if (correo === "shirleyn@ufps.edu.co" && clave == "poncho") {
+                window.location.href = "principal_Docentes.html";
+            }
+            else if (correo === "alejandra@ufps.edu.co" && clave == "william") {
+                window.location.href = "principal_Jovenes.html";
+            }
+            else if (correo === "salvador@ufps.edu.co" && clave == "huertasplata") {
+                window.location.href = "principal_Director_Departamento.html";
+            }
+            else if (correo === "jpilar@ufps.edu.co" && clave == "ingsistemas") {
+                window.location.href = "principal_Representante_Facultad.html";
+            } else {
+                alert("Usuario o clave incorrectos");
+            }
+        }
+
+    }
+
+    /**
+     * @method registrarUsuario
+     * Método que se encarga de ejecutar el servicio que registra un usuario.
+     *
+     * @param {Object} usuario  Objeto con los datos del usuario a registrar.
+     */
     static registrarUsuario(usuario) {
         Utilitario.agregarMascara();
         fetch("../../../back/controller/UsuarioController_Insert.php", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(usuario),
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw response;
-            })
-            .then(function(data) {
-                $("#modalusuario").modal("hide");
-                Mensaje.mostrarMsjExito(
-                    "Registro exitoso",
-                    "Los datos de usuario fueron registrados exitosamente. Por favor espere a que un usuario administrador lo habilite en la plataforma."
-                );
-            })
-            .catch(function(promise) {
-                if (promise.json) {
-                    promise.json().then(function(response) {
-                        var mensaje = response ? response.mensaje : "";
-                        if (mensaje) {
-                            Mensaje.mostrarMsjWarning("Advertencia", mensaje);
-                        }
-                    });
-                } else {
-                    Mensaje.mostrarMsjError(
-                        "Error",
-                        "Ocurrió un error inesperado. Intentelo nuevamente por favor."
-                    );
-                }
-            })
-            .finally(function() {
-                Utilitario.quitarMascara();
-            });
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuario),
+        })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw response;
+                })
+                .then(function (data) {
+                    $("#modalusuario").modal("hide");
+                    Mensaje.mostrarMsjExito(
+                            "Registro exitoso",
+                            "Los datos de usuario fueron registrados exitosamente. Por favor espere a que un usuario administrador lo habilite en la plataforma."
+                            );
+                })
+                .catch(function (promise) {
+                    if (promise.json) {
+                        promise.json().then(function (response) {
+                            var mensaje = response ? response.mensaje : "";
+                            if (mensaje) {
+                                Mensaje.mostrarMsjWarning("Advertencia", mensaje);
+                            }
+                        });
+                    } else {
+                        Mensaje.mostrarMsjError(
+                                "Error",
+                                "Ocurrió un error inesperado. Intentelo nuevamente por favor."
+                                );
+                    }
+                })
+                .finally(function () {
+                    Utilitario.quitarMascara();
+                });
     }
 
     /**
@@ -194,45 +175,45 @@ class LoginController {
      */
     static recuperarClave(correo) {
         Utilitario.agregarMascara();
-        fetch("../../../back/controller/UsuarioController_Recover.php", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ correo }),
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw response;
-            })
-            .then(function(data) {
-                $("#modalrecover").modal("hide");
-                Mensaje.mostrarMsjExito(
-                    "Mensaje enviado",
-                    "Se ha enviado un mensaje al correo diligenciado. Por favor reviselo y siga los pasos mencionados en en el mensaje."
-                );
-            })
-            .catch(function(promise) {
-                if (promise.json) {
-                    promise.json().then(function(response) {
-                        var mensaje = response ? response.mensaje : "";
-                        if (mensaje) {
-                            Mensaje.mostrarMsjWarning("Advertencia", mensaje);
-                        }
-                    });
-                } else {
-                    Mensaje.mostrarMsjError(
-                        "Error",
-                        "Ocurrió un error inesperado. Intentelo nuevamente por favor."
-                    );
-                }
-            })
-            .finally(function() {
-                Utilitario.quitarMascara();
-            });
+        fetch("../../back/controller/UsuarioController_Recover.php", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({correo}),
+        })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw response;
+                })
+                .then(function (data) {
+                    $("#modalrecover").modal("hide");
+                    Mensaje.mostrarMsjExito(
+                            "Mensaje enviado",
+                            "Se ha enviado un mensaje al correo diligenciado. Por favor reviselo y siga los pasos mencionados en en el mensaje."
+                            );
+                })
+                .catch(function (promise) {
+                    if (promise.json) {
+                        promise.json().then(function (response) {
+                            var mensaje = response ? response.mensaje : "";
+                            if (mensaje) {
+                                Mensaje.mostrarMsjWarning("Advertencia", mensaje);
+                            }
+                        });
+                    } else {
+                        Mensaje.mostrarMsjError(
+                                "Error",
+                                "Ocurrió un error inesperado. Intentelo nuevamente por favor."
+                                );
+                    }
+                })
+                .finally(function () {
+                    Utilitario.quitarMascara();
+                });
     }
 
     /**
@@ -244,47 +225,47 @@ class LoginController {
      */
     static cambiarClave(token, clave) {
         Utilitario.agregarMascara();
-        fetch("../../../back/controller/UsuarioController_NewPassword.php", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ token, clave }),
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw response;
-            })
-            .then(function() {
-                Mensaje.mostrarMsjExito(
-                    "Cambio exitoso",
-                    "Clave cambiada exitosamente.",
-                    function() {
-                        window.location.href = "login.html";
+        fetch("../../back/controller/UsuarioController_NewPassword.php", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({token, clave}),
+        })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
                     }
-                );
-            })
-            .catch(function(promise) {
-                if (promise.json) {
-                    promise.json().then(function(response) {
-                        var mensaje = response ? response.mensaje : "";
-                        if (mensaje) {
-                            Mensaje.mostrarMsjWarning("Advertencia", mensaje);
-                        }
-                    });
-                } else {
-                    Mensaje.mostrarMsjError(
-                        "Error",
-                        "Ocurrió un error inesperado. Intentelo nuevamente por favor."
+                    throw response;
+                })
+                .then(function () {
+                    Mensaje.mostrarMsjExito(
+                            "Cambio exitoso",
+                            "Clave cambiada exitosamente.",
+                            function () {
+                                window.location.href = "login.html";
+                            }
                     );
-                }
-            })
-            .finally(function() {
-                Utilitario.quitarMascara();
-            });
+                })
+                .catch(function (promise) {
+                    if (promise.json) {
+                        promise.json().then(function (response) {
+                            var mensaje = response ? response.mensaje : "";
+                            if (mensaje) {
+                                Mensaje.mostrarMsjWarning("Advertencia", mensaje);
+                            }
+                        });
+                    } else {
+                        Mensaje.mostrarMsjError(
+                                "Error",
+                                "Ocurrió un error inesperado. Intentelo nuevamente por favor."
+                                );
+                    }
+                })
+                .finally(function () {
+                    Utilitario.quitarMascara();
+                });
     }
 
     /**
@@ -309,13 +290,13 @@ class LoginController {
             $("#superAdmLog").remove();
             $("#superAdmLogin").remove();
         }
-        //---------------------------------------------------
+//---------------------------------------------------
         if (Utilitario.getLocal("esJuradoLogin") === "1") {
             $("#juradoLog").text("- Jurado");
         } else {
             $("#juradoLog").remove();
         }
-        //---------------------------------------------------
+//---------------------------------------------------
         if (Utilitario.getLocal("esCoordinadorLogin") === "1") {
             $("#coordinadorLog").text("- Coordinador");
             let br = document.createElement("br");

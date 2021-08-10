@@ -12,7 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/Proyecto%20Final/back/dao/properties/Properties.ini</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/front/view/login.html</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/front/js/login/LoginView.js</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/front/js/login/LoginController.js</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/back/controller/UsuarioController_Login.php</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/back/facade/UsuariosFacade.php</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/back/dao/entities/UsuariosDao.php</file>
+            <file>file:/D:/xampp/htdocs/Proyecto%20Final/back/controller/Concepto_cumplimientoController_Select.php</file>
         </group>
     </open-files>
 </project-private>
